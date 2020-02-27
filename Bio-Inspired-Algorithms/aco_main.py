@@ -57,11 +57,11 @@ def trip_distance_cost(loc1, loc2):
     polar coordinates in taxicab geometry https://en.wikipedia.org/wiki/Taxicab_geometry
     """
     return 0.621371 * 6371 * (
-        abs(2 * np.arctan2(np.sqrt(np.square(
-            np.sin((abs(loc2['y'] - loc1['y']) * np.pi / 180) / 2))),
-            np.sqrt(1-(np.square(np.sin((abs(loc2['y'] - loc1['y']) * np.pi / 180) / 2)))))) +
-        abs(2 * np.arctan2(np.sqrt(np.square(np.sin((abs(loc2['x'] - loc1['x']) * np.pi / 180) / 2))),
-                           np.sqrt(1-(np.square(np.sin((abs(loc2['x'] - loc1['x']) * np.pi / 180) / 2)))))))
+            abs(2 * np.arctan2(np.sqrt(np.square(
+                np.sin((abs(loc2['y'] - loc1['y']) * np.pi / 180) / 2))),
+                np.sqrt(1 - (np.square(np.sin((abs(loc2['y'] - loc1['y']) * np.pi / 180) / 2)))))) +
+            abs(2 * np.arctan2(np.sqrt(np.square(np.sin((abs(loc2['x'] - loc1['x']) * np.pi / 180) / 2))),
+                               np.sqrt(1 - (np.square(np.sin((abs(loc2['x'] - loc1['x']) * np.pi / 180) / 2)))))))
 
 
 # Read in command line arguments
@@ -102,9 +102,7 @@ rank = len(locations)
 for i in range(rank):
     row = []
     for j in range(rank):
-        row.append(time_cost_between_points(
-            locations[i], locations[j],
-            1, 0))
+        row.append(time_cost_between_points(locations[i], locations[j], 1, 0))
     cost_matrix.append(row)
 
 # Pass in user arguments
